@@ -1909,11 +1909,11 @@ This requires Python 2.7 or later."
   (let ((test (cond
                (test (format "%s.%s" module test))
                (module module)
-               (t "discover"))))
+               (t (list "discover" "-v")))))
     (apply #'elpy-test-run
            top
            (append elpy-test-discover-runner-command
-                   (list test)))))
+                   (list* test)))))
 (put 'elpy-test-discover-runner 'elpy-test-runner-p t)
 
 (defun elpy-test-django-runner (top file module test)
